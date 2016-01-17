@@ -13,7 +13,8 @@
  public class Main{
      
      static final String DIV = "\n";//Divisor of read File
-     static String [] data_Sort = null;
+     static String [] data_Sort = null;//Content information in String form
+     static Integer [] data_SortInteger = null;
      
      public static void main(String []argv){
          //Call menu
@@ -44,7 +45,7 @@
 
         String[] options = {"1.-Cargar un archivo =>","2.-Ordenamiento por metodo : HeapSort","3.-Ordenamiento por metodo : Insercion",
                         "4.-Ordenamiento por metodo : Merge","5.-Ordenamiento por metodo : Seleccion", "6.-Ordenamiento por metodo : Quicksort",
-                        "[7..00].- Salir =>"};
+                        "7.-Imprimir elementos cargados","[8..00].- Salir =>"};
 
         while(option != -1){//Waiting for defalut case
             
@@ -73,6 +74,8 @@
                 //load file external directory
                 try{
                     data_Sort = loadFile();
+                    data_SortInteger = parseInformation(data_Sort);//Transform string to integer
+                    
                 }catch(IOException e){ data_Sort = null;}
                 return option;
             case 2:
@@ -95,6 +98,10 @@
                 //any parameters
                 test_QuickSort();
                 return option;
+            case 7:
+                printArray(data_Sort);
+                printArray(data_SortInteger);
+                return option;    
             default:
                 return -1;
         }           
@@ -127,6 +134,25 @@
          System.out.println("==============> LOS DATOS SE AN CARGADO CORRECTAMENTE !");
          //Some sentences for load file
          return myFile;
+     }
+     
+     private static Integer[] parseInformation(String[] Element){
+         
+         Integer [] Temp = new Integer[Element.length];
+         Integer index = 0;
+         for(String element : Element)
+             Temp[index] = Integer.parseInt(Element[index++]);
+         
+         return Temp;
+     } 
+     
+     public static <T> void printArray(T[] A){
+         
+         System.out.println("\n\t>>>>>>[ CONTENIDO DEL ARCHIVO ]<<<<<<\n");
+         for(T element : A){
+             System.out.println(element);
+         }
+         
      }
      
  }
