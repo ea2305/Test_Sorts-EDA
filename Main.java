@@ -7,9 +7,13 @@
  */
  
  import java.util.Scanner;
- import java.util.List;
+ import util.AnalizaFile;
+ import java.io.*;
  
  public class Main{
+     
+     static final String DIV = "\n";//Divisor of read File
+     static String [] data_Sort = null;
      
      public static void main(String []argv){
          //Call menu
@@ -67,7 +71,9 @@
         switch(option){
             case 1:
                 //load file external directory
-                loadFile();
+                try{
+                    data_Sort = loadFile();
+                }catch(IOException e){ data_Sort = null;}
                 return option;
             case 2:
                 //any parameters
@@ -95,12 +101,32 @@
      }
      
      //Read file
-     private static String[] loadFile(){
+     private static String[] loadFile()throws IOException{
          
            //instance of file reader => 
-//         AnallizaFile fileReader = new AnallizaFile();       
+         Scanner read = new Scanner(System.in);
+         
+         //declaration arry with information
+         String [] myFile;
+                  
+         //Declareation with name inside
+         System.out.println("==============>[ LECTURA DE ARCHIVO PARA ORDENAMIENTO]<==============\n");
+         System.out.println("===========[ INTRODUZCA EL NOMBRE DEL ARCHIVO]=============");
+         String nameFile = read.nextLine();
+         
+         //Create fileReader             
+       
+        AnalizaFile fileReader = new AnalizaFile(nameFile);
+        myFile = fileReader.getAllFile().split( DIV );
+        
+        if(fileReader.getNumberLines() < 1){
+            System.out.println("X =======> Error verifique el nombre he intente de nuevo\n");
+            return null;
+        }          
+                   
+         System.out.println("==============> LOS DATOS SE AN CARGADO CORRECTAMENTE !");
          //Some sentences for load file
-         return null;
+         return myFile;
      }
      
  }
