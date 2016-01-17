@@ -1,6 +1,8 @@
 package util;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 /**
 * Clase para la creacion de string con los datos de un archivo
 * Obteniendolos con la clase "getLines" y almacenada en el string:
@@ -17,80 +19,41 @@ public class AnalizaFile{
 	String NAME_FILE;//Atributo almacenador de nombre de archivo
 	int Number_lines;//Obtine el numero de lineas del archivo,
 					 // una vez llamada la funcion getLines.
-						 
-	String Buffer;//Buffer de la lectura de el archivo Memoria Volatil :c
 	
 	String BufferString;// Cadena que contiene los datos del archivo, 
 							 // en un String separado por saltos de linea '\n'
-
-	File Archivo;//Variable para la apertura del archivo
-	FileReader Frd;
-	private boolean fileRead;//Indica estatdo de lectura	
+                             
+    String div_String;//Parametro para division de archivo
 
 	public AnalizaFile(){//Constructor por defecto
 	
 		this.NAME_FILE = "";
 		this.Number_lines = -7;
-		this.Buffer = "";
-		this.BufferString = ""; 
-		this.Archivo = null;
-		this.Frd = null;
-		this.fileRead = false;
+		this.BufferString = null;
+        this.div_String = "\n"; 
+
 	}
 
 	public AnalizaFile(String NAME_STR){//Contructor que recibe el nombre del archivo
 		
 		this.Number_lines = -7;
-		this.Buffer = "";
-		this.BufferString = ""; 
-		this.Archivo = null;
-		this.Frd = null;
+		this.BufferString = null; 
 		this.NAME_FILE = NAME_STR;
-		this.fileRead = false;
-	}
-	
-	/**
-	*@param Ningun valor
-	*/
-	public void OpenFile()throws IOException{//Apertura y cierre de archivo. Sub-funcion, brindar el numero de lineas
+        this.div_String = "\n";
 
-		this.Number_lines = 0;
-		try{
-			
-			Archivo = new File(NAME_FILE);
-			Frd = new FileReader(Archivo);
-			BufferedReader Brd = new BufferedReader(Frd);
-			
-			while(((Buffer = Brd.readLine()) != null)){
-
-				BufferString = BufferString + Buffer + "\n";
-				this.Number_lines++;
-			}	
-			this.fileRead = true;//Cambiar a estado leeido.
-			
-		}catch(IOException fnot){//En caso de un Error "El archivo no existe" 
-		
-			System.out.println("Error: archivo [" + this.NAME_FILE + "] no encontrado");
-			System.out.println("Inserte el nombre del archivo por medio del constructor.");
-			System.out.println("Tambien puede apoyarse de setFileName para indicar un nuevo nombre.");
-			
-			this.Number_lines = -1;
-			
-		}finally{
-			if(this.fileRead)//caso de cierre.
-				Frd.close();//Finalizamos apertura de archivo	
-		}
 	}
 
 	/**
-	*@param Ningun valor
-	*@return un valor entero
-	*/
+     *@return Number_lines : int , con valor de numero de lineas
+     */
 	public int getLines()throws IOException{//Realiza la lectura de el archivo y obtiene el numer de lineas 
-						  //Separados por \n , es llamado para obtener los datos.
-						  
-		if(!this.fileRead && Number_lines == -7)//Evitar lectura innecesaria						  	
-			OpenFile();
+						  //Separados por \n , es llamado para obtener los datos.            
+        						  
+		if(BufferString == null){//Evitar lectura innecesaria						  	
+			OpenFile();//Aperturamos el archivo para la carga de datos
+        }
+        //Contamos divisiones
+        Number_lines = BufferString.split(div_String).length;       
 			
 		return Number_lines ;
 	}
@@ -100,13 +63,12 @@ public class AnalizaFile{
 	*/
 	public String getFirstLine()throws IOException{//Obtiene la primer linea de un archivo
 		
-		if(this.Number_lines == -7)	
-			this.Number_lines = getLines();
+		if(BufferString == null)
+            getLines();
 	
 		String DateToSend [] = BufferString.split("\n");
 
 		return DateToSend[0];
-
 	}
 	
 	/**
@@ -115,28 +77,12 @@ public class AnalizaFile{
 	*/
 	public String getLastLine()throws IOException{//Obtiene la ultima linea de un archivo
 
-		if(this.Number_lines == -7)
-			this.Number_lines = getLines();
+		if(BufferString == null)
+			getLines();
 
 		String DateToSend [] = BufferString.split("\n");
 
 		return DateToSend[Number_lines-1];
-
-	}
-
-	/**
-	*@param String Credits : Recive nombre del archivo
-	*@return Cadena con los nombres de los autores
-	*/
-	public String creditos(String Credits)throws IOException{
-		
-		AnalizaFile credits = new AnalizaFile(Credits);
-		int t = credits.getLines();
-		if(t != -1)
-			for(int i = 0 ; i < t; i++)
-				System.out.println(credits.getAnyLine(i));
-				
-		return credits.BufferString;
 	}
 
 	/**
@@ -145,7 +91,6 @@ public class AnalizaFile{
 	public void setFileName(String nFile){//Contructor que recibe el nombre del archivo
 		this.NAME_FILE = nFile;//Agregamos nuevo nombre.
 		this.Number_lines = -7;//Reiniciamos lecutra.
-		this.fileRead = false;
 		this.BufferString = "";
 	}
 	
@@ -155,8 +100,13 @@ public class AnalizaFile{
 	*/
 	public String getAnyLine(int N)throws IOException{//Obtiene la primer linea de un archivo
 
-		if(this.Number_lines == -7)
-			this.Number_lines = getLines();
+		if(BufferString == null)
+			getLines();
+        
+        if(N > Number_lines){
+            System.out.println("El elemento que busca no existe, o excede le numero de elementos.");
+            return "";
+        }    
 	
 		String BUfferAsunder [] = BufferString.split("\n");
 
@@ -165,8 +115,8 @@ public class AnalizaFile{
 	}
     
     public String getAllFile() throws IOException{
-        if(this.Number_lines == -7)
-            this.Number_lines = getLines();
+        if(BufferString == null)
+            getLines();
             
         return BufferString;
     }
@@ -196,8 +146,26 @@ public class AnalizaFile{
 		}
 	}
     
-    public int getNumberLines(){
-        return Number_lines;
+    /**
+     *Metodo para la apertura de archivos
+     */    
+    private void OpenFile(){//Nuevo metodo de lectura evadiendo el lisado linea por linea
+        
+         try{
+             String content = new String(Files.readAllBytes(Paths.get(NAME_FILE)));
+             BufferString = content;//Reasignacion por seguridad
+         }catch(IOException e){
+            System.out.println("Error: archivo [" + this.NAME_FILE + "] no encontrado");
+            BufferString = null; 
+         }
+        
+    }
+    
+    /**
+     *@param div_String : String con parametro para division de cadenas
+     */
+    public void setDivition(String div_String){
+        this.div_String = div_String;
     }
 }
 

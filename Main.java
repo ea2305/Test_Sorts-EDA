@@ -126,7 +126,7 @@
         AnalizaFile fileReader = new AnalizaFile(nameFile);
         myFile = fileReader.getAllFile().split( DIV );
         
-        if(fileReader.getNumberLines() < 1){
+        if(myFile == null){
             System.out.println("X =======> Error verifique el nombre he intente de nuevo\n");
             return null;
         }          
