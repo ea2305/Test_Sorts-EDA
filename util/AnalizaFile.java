@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 * @author Elihu Alejandro Cruz Albores
 * @author Luis Fernando Herrera Pimentel
 * @author Carlos Maximiliano Ortiz Escobar
-* @version 1.6
+* @version 1.8
 */
 
 public class AnalizaFile{
