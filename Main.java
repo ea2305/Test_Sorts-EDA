@@ -4,6 +4,7 @@
  *@author Julio de Buen Hernandez
  *@author Luis Angel Farelo Toledo
  *@author Luis Alcocer ... [Put your name, please]
+ *@author Carlos Maximiliano Ortiz Escobar
  */
  
  import java.util.Scanner;
