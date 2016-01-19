@@ -10,6 +10,7 @@
  import java.util.Scanner;
  import util.AnalizaFile;
  import java.io.*;
+ import sorts.*;
  
  public class Main{
      
@@ -31,7 +32,20 @@
      public static void test_InsertionSort(){}
      
      //Add parameters at interface "SortStruct", if you want to do :v
-     public static void test_MergeSort(){}
+     public static void test_MergeSort(){
+         
+         MergeSort myMerge = new MergeSort();
+         
+         if(data_SortInteger == null){
+             System.out.println(">> Cargue datos de un archivo, antes de iniciar.");
+             return;
+         }
+         
+         myMerge.mergeSort(data_SortInteger);
+         
+         System.out.println("\n>> [ Numero de intercambios : " + myMerge.getIndex() + " ]");
+         
+     }
      
      //Add parameters at interface "SortStruct", if you want to do :v
      public static void test_SelectionSort(){}
@@ -76,8 +90,9 @@
                 try{
                     data_Sort = loadFile();
                     data_SortInteger = parseInformation(data_Sort);//Transform string to integer
-                    
+                                        
                 }catch(IOException e){ data_Sort = null;}
+                
                 return option;
             case 2:
                 //any parameters
