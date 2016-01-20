@@ -1,6 +1,12 @@
 package sorts;
 
 public class Seleccion{
+    
+        long time;
+        
+        public Seleccion(){
+            this.time = 0;
+        }
 	
 		public Integer[] seleccion(Integer[] arreglo){
 			long TInicio = System.currentTimeMillis();
@@ -25,7 +31,7 @@ public class Seleccion{
 
 			long TFin = System.currentTimeMillis();
 
-			long time=TFin-TInicio;
+			this.time=TFin-TInicio;
 
 			System.out.println("Numero de iteraciones: "+n);
 			System.out.println("\n>> [ Numero de intercambios : " + intercambios + " ]");
