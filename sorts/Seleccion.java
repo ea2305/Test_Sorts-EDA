@@ -1,7 +1,13 @@
 package sorts;
 
 public class Seleccion{
-	
+
+	private int index = 0;
+
+	public int getIndex(){
+		return this.index;
+	}
+
 		public Integer[] seleccion(Integer[] arreglo){
 			long TInicio = System.currentTimeMillis();
 			Integer minimo;
@@ -29,6 +35,7 @@ public class Seleccion{
 
 			System.out.println("Numero de iteraciones: "+n);
 			System.out.println("\n>> [ Numero de intercambios : " + intercambios + " ]");
+			this.index = intercambios;
 			//System.out.println("El tiempo que el programa demoro en ordenar fue de : " + time + " milisegundos");
 			return arreglo;
 	}

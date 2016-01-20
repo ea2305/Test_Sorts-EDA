@@ -107,7 +107,7 @@ public class AnalizaArray{
   public String calculoFuncion(){
     int n = getNumElementos();
     boolean[] orden = ordenado();
-    if(orden[0]){
+    if(orden[0] && false){
       if(orden[1]){
         return(
           "\n"+"Calculo de complejidad por funcion"
@@ -133,11 +133,11 @@ public class AnalizaArray{
     }else{
       return(
         "\n"+"Calculo de complejidad por funcion"
-        +"\n"+"Arreglo Desordenado con n: "+ n
-        +"\n\t"+"HeapSort complejidad: "+ (n*log(n,2))
+        +"\n"+"Arreglo con n: "+ n
+        +"\n\t"+"HeapSort complejidad: "+ ((n*log(n,2))+(n/2))
         +"\n\t"+"Insercion complejidad: "+ (n*n)
         +"\n\t"+"Merge complejidad: "+ (n*log(n,2))
-        +"\n\t"+"Seleccion complejidad: "+ (n*n)
+        +"\n\t"+"Seleccion complejidad: "+ ((n*n)-n/2)
         +"\n\t"+"Quicksort complejidad: "+ (n*log(n,2))
       );
     }
