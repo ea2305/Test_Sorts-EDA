@@ -1,9 +1,12 @@
+package sorts;
+
 import java.util.*;
+
 public class Insercion {
-    int contador =0;
+    int contador = 0;
   //  static final int DATOS = 100000;
-    public int[] ordenarInsercion(int[] array){     
-        int aux;
+    public Integer[] ordenarInsercion(Integer[] array){     
+        Integer aux;
 
         for (int i = 1; i < array.length; i++) {
             aux = array[i];

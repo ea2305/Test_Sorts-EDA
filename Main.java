@@ -37,14 +37,19 @@
              return;
          }
          
-         myHeap.heapSort(data_SortInteger);
-         
-         System.out.println("\n>> [ Numero de intercambios : " + myHeap.getIndex() + " ]");
+        myHeap.heapSort(data_SortInteger);
+        
+        System.out.println("\n>> [ Numero de intercambios : " + myHeap.getIndex() + " ]");
+        printArray(data_Sort);
+        printArray(data_SortInteger);
          
      }
      
      //Add parameters at interface "SortStruct", if you want to do :v
      public static void test_InsertionSort(){
+         
+        System.out.println("\n***************[ INSERTION SORT ]***************\n");
+                 
         Insercion insercion = new Insercion();
         if(data_SortInteger == null){
              System.out.println(">> Cargue datos de un archivo, antes de iniciar.");
@@ -52,6 +57,10 @@
          }
 
          insercion.ordenarInsercion(data_SortInteger);
+         
+        System.out.println("\n>> [ Numero de intercambios : " + insercion.getCount() + " ]");
+        printArray(data_Sort);
+        printArray(data_SortInteger);
 
      }
      
@@ -70,6 +79,8 @@
          myMerge.mergeSort(data_SortInteger);
          
          System.out.println("\n>> [ Numero de intercambios : " + myMerge.getIndex() + " ]");
+        printArray(data_Sort);
+        printArray(data_SortInteger);
          
      }
      
@@ -86,14 +97,31 @@
              return;
          }
          
-         Integer[] data=seleccion.seleccion(data_SortInteger);
-        
-
+        Integer[] data = seleccion.seleccion(data_SortInteger);
+        printArray(data_Sort);
+        printArray(data_SortInteger);
      }
      
      //Add parameters at interface "SortStruct", if you want to do :v
 
-     public static void test_QuickSort(){}
+     public static void test_QuickSort(){
+         
+        System.out.println("\n***************[ HEAPSORT]***************\n");
+         
+        QuickSort myQuick = new QuickSort();
+        
+        if(data_SortInteger == null){
+            System.out.println(">> Cargue datos de un archivo, antes de iniciar.");
+            return;
+        }
+        
+        myQuick.sort(data_SortInteger);
+        
+        System.out.println("\n>> [ Numero de intercambios : " + myQuick.getIndex() + " ]");
+        printArray(data_Sort);
+        printArray(data_SortInteger);
+        
+     }
      
      public static void Menu(){
         //Start options with methods sort
@@ -102,7 +130,7 @@
 
         String[] options = {"1.-Cargar un archivo =>","2.-Ordenamiento por metodo : HeapSort","3.-Ordenamiento por metodo : Insercion",
                         "4.-Ordenamiento por metodo : Merge","5.-Ordenamiento por metodo : Seleccion", "6.-Ordenamiento por metodo : Quicksort",
-                        "7.-Imprimir elementos cargados","[8..00].- Salir =>"};
+                        "7.-Imprimir elementos cargados","8.-Reiniciar array","[9..00].- Salir =>"};
 
         while(option != -1){//Waiting for defalut case
             
@@ -158,6 +186,10 @@
                 printArray(data_Sort);
                 printArray(data_SortInteger);
                 return option;    
+            case 8:
+                restarArray();
+                System.out.println("\n**********>ARREGLO REINICIADO !\n");
+                return option;   
             default:
                 return -1;
         }           
@@ -170,6 +202,11 @@
              System.out.println(element);
          }
          
+     }
+     
+     private static void restarArray(){
+         AnalizaFile myReader = new AnalizaFile();
+         data_SortInteger = myReader.parseInformation(data_Sort);//Transform string to integer
      }
      
  }
