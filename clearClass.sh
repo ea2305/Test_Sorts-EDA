@@ -4,6 +4,7 @@
 
 rm ./*.class ./util/*.class ./sorts/*.class
 
+echo "Limpieza completa"
+
 #Remove on next line on windows
-echo "Operacion realizada, verifique directorios"
 

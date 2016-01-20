@@ -46,12 +46,16 @@ public class MergeSort {
         }
         // Copy TmpArray back
         for( int i = 0; i < numElements; i++, rightEnd-- ){
-            System.out.println(++count);
+            ++count;//Cambios
             a[ rightEnd ] = tmpArray[ rightEnd ];
         }
     }
     
     public int getIndex(){
         return this.count;
+    }
+    
+    public void restartIndex(){
+        this.count = 0;
     }
 }

@@ -11,7 +11,7 @@
  import util.AnalizaFile;
  import java.io.*;
  import sorts.*;
- 
+
  public class Main{
      
      static final String DIV = "\n";//Divisor of read File
@@ -26,13 +26,30 @@
      }
      
      //Add parameters at interface "SortStruct", if you want to do :v
-     public static void test_HeapSort(){}
+     public static void test_HeapSort(){
+         
+         System.out.println("\n***************[ HEAPSORT]***************\n");
+         
+         HeapSort myHeap = new HeapSort();
+         
+         if(data_SortInteger == null){
+             System.out.println(">> Cargue datos de un archivo, antes de iniciar.");
+             return;
+         }
+         
+         myHeap.heapSort(data_SortInteger);
+         
+         System.out.println("\n>> [ Numero de intercambios : " + myHeap.getIndex() + " ]");
+         
+     }
      
      //Add parameters at interface "SortStruct", if you want to do :v
      public static void test_InsertionSort(){}
      
      //Add parameters at interface "SortStruct", if you want to do :v
      public static void test_MergeSort(){
+         
+         System.out.println("\n***************[ MERGESORT]***************\n");
          
          MergeSort myMerge = new MergeSort();
          
@@ -48,9 +65,25 @@
      }
      
      //Add parameters at interface "SortStruct", if you want to do :v
-     public static void test_SelectionSort(){}
+     public static void test_SelectionSort(){
+         
+        System.out.println("\n***************[ SELECTIONSORT]***************\n");
+        
+        Seleccion seleccion=new Seleccion();
+
+
+         if(data_SortInteger == null){
+             System.out.println(">> Cargue datos de un archivo, antes de iniciar.");
+             return;
+         }
+         
+         Integer[] data=seleccion.seleccion(data_SortInteger);
+        
+
+     }
      
      //Add parameters at interface "SortStruct", if you want to do :v
+
      public static void test_QuickSort(){}
      
      public static void Menu(){
@@ -87,11 +120,9 @@
         switch(option){
             case 1:
                 //load file external directory
-                try{
-                    data_Sort = loadFile();
-                    data_SortInteger = parseInformation(data_Sort);//Transform string to integer
-                                        
-                }catch(IOException e){ data_Sort = null;}
+                AnalizaFile myReader = new AnalizaFile();
+                data_Sort = myReader.loadFile();
+                data_SortInteger = myReader.parseInformation(data_Sort);//Transform string to integer
                 
                 return option;
             case 2:
@@ -122,45 +153,6 @@
                 return -1;
         }           
      }
-     
-     //Read file
-     private static String[] loadFile()throws IOException{
-         
-           //instance of file reader => 
-         Scanner read = new Scanner(System.in);
-         
-         //declaration arry with information
-         String [] myFile;
-                  
-         //Declareation with name inside
-         System.out.println("==============>[ LECTURA DE ARCHIVO PARA ORDENAMIENTO]<==============\n");
-         System.out.println("===========[ INTRODUZCA EL NOMBRE DEL ARCHIVO]=============");
-         String nameFile = read.nextLine();
-         
-         //Create fileReader             
-       
-        AnalizaFile fileReader = new AnalizaFile(nameFile);
-        myFile = fileReader.getAllFile().split( DIV );
-        
-        if(myFile == null){
-            System.out.println("X =======> Error verifique el nombre he intente de nuevo\n");
-            return null;
-        }          
-                   
-         System.out.println("==============> LOS DATOS SE AN CARGADO CORRECTAMENTE !");
-         //Some sentences for load file
-         return myFile;
-     }
-     
-     private static Integer[] parseInformation(String[] Element){
-         
-         Integer [] Temp = new Integer[Element.length];
-         Integer index = 0;
-         for(String element : Element)
-             Temp[index] = Integer.parseInt(Element[index++]);
-         
-         return Temp;
-     } 
      
      public static <T> void printArray(T[] A){
          

@@ -3,6 +3,8 @@ package util;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Scanner;
+
 /**
 * Clase para la creacion de string con los datos de un archivo
 * Obteniendolos con la clase "getLines" y almacenada en el string:
@@ -49,7 +51,7 @@ public class AnalizaFile{
 	public int getLines()throws IOException{//Realiza la lectura de el archivo y obtiene el numer de lineas 
 						  //Separados por \n , es llamado para obtener los datos.            
         						  
-		if(BufferString == null){//Evitar lectura innecesaria						  	
+		if(Number_lines < 0){//Evitar lectura innecesaria						  	
 			OpenFile();//Aperturamos el archivo para la carga de datos
         }
         //Contamos divisiones
@@ -63,7 +65,7 @@ public class AnalizaFile{
 	*/
 	public String getFirstLine()throws IOException{//Obtiene la primer linea de un archivo
 		
-		if(BufferString == null)
+		if(Number_lines < 0)
             getLines();
 	
 		String DateToSend [] = BufferString.split("\n");
@@ -77,7 +79,7 @@ public class AnalizaFile{
 	*/
 	public String getLastLine()throws IOException{//Obtiene la ultima linea de un archivo
 
-		if(BufferString == null)
+		if(Number_lines < 0)
 			getLines();
 
 		String DateToSend [] = BufferString.split("\n");
@@ -100,7 +102,7 @@ public class AnalizaFile{
 	*/
 	public String getAnyLine(int N)throws IOException{//Obtiene la primer linea de un archivo
 
-		if(BufferString == null)
+		if(Number_lines < 0)
 			getLines();
         
         if(N > Number_lines){
@@ -115,9 +117,10 @@ public class AnalizaFile{
 	}
     
     public String getAllFile() throws IOException{
-        if(BufferString == null)
+        
+        if(Number_lines < 0)
             getLines();
-            
+           
         return BufferString;
     }
 
@@ -167,5 +170,51 @@ public class AnalizaFile{
     public void setDivition(String div_String){
         this.div_String = div_String;
     }
+    
+         //Read file
+     public String[] loadFile(){
+         
+           //instance of file reader => 
+        Scanner read_file = new Scanner(System.in);
+                
+        //Declareation with name inside
+        System.out.println("==============>[ LECTURA DE ARCHIVO PARA ORDENAMIENTO]<==============\n");
+        System.out.println("===========[ INTRODUZCA EL NOMBRE DEL ARCHIVO]=============");
+        System.out.print("Seleccion : ");
+        setFileName(read_file.nextLine());//Lectura de datos y asignacion de datos.
+        System.out.println();
+         
+        //Create fileReader             
+        //AnalizaFile fileReader = new AnalizaFile(nameFile);
+        //System.out.println(nameFile);
+        System.out.println("Buscar en ::> " + this.NAME_FILE);
+        
+        try{
+            getAllFile();
+        }catch(IOException e){
+            
+        }
+        
+        if(BufferString == null || BufferString.equals("")){
+            
+            System.out.println("X =======> Error verifique el nombre he intente de nuevo\n");
+            return null;
+        }
+                   
+        System.out.println("==============> LOS DATOS SE HAN CARGADO CORRECTAMENTE !");
+            
+         return BufferString.split(div_String);
+     }
+     
+     public Integer[] parseInformation(String[] Element){
+         
+         Integer [] Temp = new Integer[Element.length];
+         Integer index = 0;
+         for(String element : Element)
+             Temp[index] = Integer.parseInt(Element[index++]);
+         
+         return Temp;
+     } 
+    
 }
 
