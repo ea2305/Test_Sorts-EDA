@@ -29,7 +29,16 @@
      public static void test_HeapSort(){}
      
      //Add parameters at interface "SortStruct", if you want to do :v
-     public static void test_InsertionSort(){}
+     public static void test_InsertionSort(){
+        Insercion insercion = new Insercion();
+        if(data_SortInteger == null){
+             System.out.println(">> Cargue datos de un archivo, antes de iniciar.");
+             return;
+         }
+
+         insercion.ordenarInsercion(data_SortInteger);
+
+     }
      
      //Add parameters at interface "SortStruct", if you want to do :v
      public static void test_MergeSort(){
