@@ -9,9 +9,15 @@ package sorts;
 public class HeapSort{
         
     int Index;
-    
+    long time;
+       
     public HeapSort(){
+        this.time = 0;
         this.Index = 0;
+    }
+    
+    public long getTime(){
+        return this.time;
     }
  
     /*
@@ -20,7 +26,10 @@ public class HeapSort{
     *@return Arraylist con datos ordenados
     */
     public void heapSort(Integer[] v) {
+        
+        long TInicio = System.currentTimeMillis();//CAll time
         final int N = v.length;
+        
         
         for(int nodo = N/2; nodo>=0; nodo--) 
             makeHeap(v, nodo, N-1);
@@ -31,6 +40,9 @@ public class HeapSort{
             v[nodo] = tmp;
             makeHeap(v, 0, nodo-1);
         }
+        
+        long TFin = System.currentTimeMillis();//end
+        this.time=TFin-TInicio;
     }
  
  

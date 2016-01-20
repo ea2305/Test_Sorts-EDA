@@ -57,19 +57,24 @@ public class TestAnalizar{
   *@param: int: numero de matriculas a generar
   */
   private static void generarMatriculas(int num){
+    AnalizaFile myReader = new AnalizaFile();
+    QuickSort myQuick = new QuickSort();
+
     GenerarMatriculas gm = new GenerarMatriculas();
     String[] matriculas = gm.generar(num);
     guardarMatriculas(matriculas, "Des");
     AnalizaArray aDes = new AnalizaArray(matriculas);
     System.out.println(aDes.calculoFuncion());//desordenado
 
-    QuickSort myQuick = new QuickSort();
-    AnalizaFile myReader = new AnalizaFile();
-    Integer [] data_SortInteger = myReader.parseInformation(matriculas);;
+    Integer [] data_SortInteger = myReader.parseInformation(matriculas);
+    testOrdenamiento(data_SortInteger);
+
     myQuick.sort(data_SortInteger);
     guardarMatriculas(data_SortInteger, "OA");
     AnalizaArray aOA = new AnalizaArray(data_SortInteger);
     System.out.println(aOA.calculoFuncion());//ordenado Ascendente
+
+    testOrdenamiento(data_SortInteger);
 
     int longitud = data_SortInteger.length;
     Integer[] descendente = new Integer[longitud];
@@ -79,6 +84,33 @@ public class TestAnalizar{
     guardarMatriculas(descendente, "OD");
     AnalizaArray aOD = new AnalizaArray(descendente);
     System.out.println(aOD.calculoFuncion());//ordenado descendente
+
+    testOrdenamiento(descendente);
+  }
+  /**
+  *@param arreglo de datos de tipo Integer
+  */
+  private static void testOrdenamiento(Integer[] data_SortInteger){
+
+    HeapSort myHeap = new HeapSort();
+    myHeap.heapSort(data_SortInteger);
+    System.out.println("complejidad HeapSort: " + myHeap.getIndex());
+
+    Insercion insercion = new Insercion();
+    insercion.ordenarInsercion(data_SortInteger);
+    System.out.println("complejidad Insercion: " + insercion.getCount());
+
+    MergeSort myMerge = new MergeSort();
+    myMerge.mergeSort(data_SortInteger);
+    System.out.println("complejidad MergeSort: " + myMerge.getIndex());
+
+    Seleccion seleccion=new Seleccion();
+    Integer[] data = seleccion.seleccion(data_SortInteger);
+    System.out.println("complejidad Seleccion: " + seleccion.getIndex());
+
+    QuickSort myQuick = new QuickSort();
+    myQuick.sort(data_SortInteger);
+    System.out.println("complejidad QuickSort: " + myQuick.getIndex());
   }
   /**
   *metodo main
@@ -89,5 +121,6 @@ public class TestAnalizar{
     generarMatriculas(50);
     generarMatriculas(100);
     generarMatriculas(500);
+    generarMatriculas(5000);
   }
 }

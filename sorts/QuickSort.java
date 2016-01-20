@@ -6,9 +6,22 @@ public class QuickSort  {
 	
 	private Integer[] numeros;
 	private int c;
-	private int Index = 0;
+	private int Index;
+    long time;
+    
+    public QuickSort(){
+        this.Index = 0;
+        this.time = 0;
+    }
+    
+    public long getTime(){
+        return this.time;
+    }
 
 	public void sort(Integer[] values) {
+        
+        long TInicio = System.currentTimeMillis();
+        
         // validar arreglo vacio
         if (values ==null || values.length==0){
             return;
@@ -16,6 +29,10 @@ public class QuickSort  {
         this.numeros = values;
         c = values.length;
         quicksort(0, c - 1);
+        
+        long TFin = System.currentTimeMillis();//END
+        this.time=TFin-TInicio;
+        
 	}
 	  
 	

@@ -41,8 +41,9 @@
         myHeap.heapSort(data_SortInteger);
 
         System.out.println("\n>> [ Numero de intercambios : " + myHeap.getIndex() + " ]");
-        printArray(data_Sort);
-        printArray(data_SortInteger);
+        System.out.println("\n>> [ Tiempo : " + myHeap.getTime() + " ]");
+        //printArray(data_Sort);
+        //printArray(data_SortInteger);
 
      }
 
@@ -60,8 +61,9 @@
          insercion.ordenarInsercion(data_SortInteger);
 
         System.out.println("\n>> [ Numero de intercambios : " + insercion.getCount() + " ]");
-        printArray(data_Sort);
-        printArray(data_SortInteger);
+        System.out.println("\n>> [ Tiempo : " + insercion.getTime() + " ]");
+        //printArray(data_Sort);
+        //printArray(data_SortInteger);
 
      }
 
@@ -80,8 +82,9 @@
          myMerge.mergeSort(data_SortInteger);
 
          System.out.println("\n>> [ Numero de intercambios : " + myMerge.getIndex() + " ]");
-        printArray(data_Sort);
-        printArray(data_SortInteger);
+         System.out.println("\n>> [ Tiempo : " + myMerge.getTime() + " ]");
+        //printArray(data_Sort);
+        //printArray(data_SortInteger);
 
      }
 
@@ -99,8 +102,9 @@
          }
 
         Integer[] data = seleccion.seleccion(data_SortInteger);
-        printArray(data_Sort);
-        printArray(data_SortInteger);
+        System.out.println("\n>> [ Tiempo : " + seleccion.getTime() + " ]");
+        //printArray(data_Sort);
+        //printArray(data_SortInteger);
      }
 
      //Add parameters at interface "SortStruct", if you want to do :v
@@ -119,8 +123,9 @@
         myQuick.sort(data_SortInteger);
 
         System.out.println("\n>> [ Numero de intercambios : " + myQuick.getIndex() + " ]");
-        printArray(data_Sort);
-        printArray(data_SortInteger);
+        System.out.println("\n>> [ Tiempo : " + myQuick.getTime() + " ]");
+        //printArray(data_Sort);
+        //printArray(data_SortInteger);
 
      }
      /**

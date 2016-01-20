@@ -4,14 +4,26 @@ public class MergeSort {
 	
     private int count;
     
+    long time;
+    
     public MergeSort(){
         count = 0;
+        this.time = 0;
+    }
+    
+    public long getTime(){
+        return this.time;
     }
     
     public void mergeSort( Integer a[ ]){
+        long TInicio = System.currentTimeMillis();
         Integer tmpArray[] = new Integer[ a.length ];
-
+        
         mergeSort( a, tmpArray, 0, a.length - 1 );
+        
+        long TFin = System.currentTimeMillis();//END
+        this.time=TFin-TInicio;
+        
     }
     
     private void mergeSort( Integer a[ ], Integer tmpArray[],int left, int right ){
