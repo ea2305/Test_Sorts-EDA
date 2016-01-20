@@ -111,7 +111,7 @@ public class AnalizaArray{
       if(orden[1]){
         return(
           "\n"+"Calculo de complejidad por funcion"
-          +"\n"+"Arreglo Ordenado Ascendente"
+          +"\n"+"Arreglo Ordenado Ascendente con n: "+ n
           +"\n\t"+"HeapSort complejidad: "+ (n*log(n,2))
           +"\n\t"+"Insercion complejidad: "+ (n*n)
           +"\n\t"+"Merge complejidad: "+ (n*log(n,2))
@@ -121,7 +121,7 @@ public class AnalizaArray{
       }else{
         return(
           "\n"+"Calculo de complejidad por funcion"
-          +"\n"+"Arreglo Ordenado Descendente"
+          +"\n"+"Arreglo Ordenado Descendente con n: "+ n
           +"\n\t"+"HeapSort complejidad: "+ (n*log(n,2))
           +"\n\t"+"Insercion complejidad: "+ (n*n)
           +"\n\t"+"Merge complejidad: "+ (n*log(n,2))
@@ -133,7 +133,7 @@ public class AnalizaArray{
     }else{
       return(
         "\n"+"Calculo de complejidad por funcion"
-        +"\n"+"Arreglo Desordenado"
+        +"\n"+"Arreglo Desordenado con n: "+ n
         +"\n\t"+"HeapSort complejidad: "+ (n*log(n,2))
         +"\n\t"+"Insercion complejidad: "+ (n*n)
         +"\n\t"+"Merge complejidad: "+ (n*log(n,2))

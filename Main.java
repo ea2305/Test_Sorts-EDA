@@ -11,6 +11,7 @@
  import util.AnalizaFile;
  import java.io.*;
  import sorts.*;
+ import util.analizar.*;
 
  public class Main{
 
@@ -126,7 +127,16 @@
      *muestra la complejidad de los algoritmos de ordenamiento
      */
      private static void calcularComplejidad(){
+       System.out.println("\n***************[ Complejidad ]***************\n");
 
+       QuickSort myQuick = new QuickSort();
+
+       if(data_SortInteger == null){
+           System.out.println(">> Cargue datos de un archivo, antes de iniciar.");
+           return;
+       }
+       AnalizaArray aa = new AnalizaArray(data_Sort);
+       System.out.println(aa.calculoFuncion());
      }
 
      public static void Menu(){
