@@ -135,10 +135,10 @@ public class AnalizaArray{
         "\n"+"Calculo de complejidad por funcion"
         +"\n"+"Arreglo con n: "+ n
         +"\n\t"+"HeapSort complejidad: "+ ((n*log(n,2))+(n/2))
-        +"\n\t"+"Insercion complejidad: "+ (n*n)
-        +"\n\t"+"Merge complejidad: "+ (n*log(n,2))
-        +"\n\t"+"Seleccion complejidad: "+ ((n*n)-n/2)
-        +"\n\t"+"Quicksort complejidad: "+ (n*log(n,2))
+        +"\n\t"+"Insercion complejidad: "+ ((((n*n)-n)/2)/2)
+        +"\n\t"+"Merge complejidad: "+ ((n*log(n,2))+((2*n)/3))
+        +"\n\t"+"Seleccion complejidad: "+ (((n*n)-n)/2)
+        +"\n\t"+"Quicksort complejidad: "+ ((n*log(n,2))/3)
       );
     }
   }
