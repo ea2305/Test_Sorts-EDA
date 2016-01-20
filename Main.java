@@ -10,8 +10,8 @@
  import java.util.Scanner;
  import util.AnalizaFile;
  import java.io.*;
- import structs.*;
- 
+ import sorts.*;
+
  public class Main{
      
      static final String DIV = "\n";//Divisor of read File
@@ -32,12 +32,34 @@
      public static void test_InsertionSort(){}
      
      //Add parameters at interface "SortStruct", if you want to do :v
-     public static void test_MergeSort(){}
+     public static void test_MergeSort(){
+         
+         MergeSort myMerge = new MergeSort();
+         
+         if(data_SortInteger == null){
+             System.out.println(">> Cargue datos de un archivo, antes de iniciar.");
+             return;
+         }
+         
+         myMerge.mergeSort(data_SortInteger);
+         
+         System.out.println("\n>> [ Numero de intercambios : " + myMerge.getIndex() + " ]");
+         
+     }
      
      //Add parameters at interface "SortStruct", if you want to do :v
      public static void test_SelectionSort(){
         
         Seleccion seleccion=new Seleccion();
+
+
+         if(data_SortInteger == null){
+             System.out.println(">> Cargue datos de un archivo, antes de iniciar.");
+             return;
+         }
+         
+         Integer[] data=seleccion.seleccion(data_SortInteger);
+        
 
      }
      
@@ -82,8 +104,9 @@
                 try{
                     data_Sort = loadFile();
                     data_SortInteger = parseInformation(data_Sort);//Transform string to integer
-                    
+                                        
                 }catch(IOException e){ data_Sort = null;}
+                
                 return option;
             case 2:
                 //any parameters
