@@ -70,6 +70,15 @@ public class TestAnalizar{
     guardarMatriculas(data_SortInteger, "OA");
     AnalizaArray aOA = new AnalizaArray(data_SortInteger);
     System.out.println(aOA.calculoFuncion());//ordenado Ascendente
+
+    int longitud = data_SortInteger.length;
+    Integer[] descendente = new Integer[longitud];
+    for (int i=0; i<longitud; i++) {
+      descendente[i] = data_SortInteger[longitud-1-i];
+    }
+    guardarMatriculas(descendente, "OD");
+    AnalizaArray aOD = new AnalizaArray(descendente);
+    System.out.println(aOD.calculoFuncion());//ordenado descendente
   }
   /**
   *metodo main
