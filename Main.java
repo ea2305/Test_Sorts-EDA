@@ -10,6 +10,7 @@
  import java.util.Scanner;
  import util.AnalizaFile;
  import java.io.*;
+ import structs.*;
  
  public class Main{
      
@@ -34,9 +35,14 @@
      public static void test_MergeSort(){}
      
      //Add parameters at interface "SortStruct", if you want to do :v
-     public static void test_SelectionSort(){}
+     public static void test_SelectionSort(){
+        
+        Seleccion seleccion=new Seleccion();
+
+     }
      
      //Add parameters at interface "SortStruct", if you want to do :v
+
      public static void test_QuickSort(){}
      
      public static void Menu(){
