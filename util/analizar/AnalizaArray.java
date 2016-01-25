@@ -107,7 +107,7 @@ public class AnalizaArray{
   public String calculoFuncion(){
     int n = getNumElementos();
     boolean[] orden = ordenado();
-    if(orden[0] && false){
+    if(orden[0]){
       if(orden[1]){
         return(
           "\n"+"Calculo de complejidad por funcion"
