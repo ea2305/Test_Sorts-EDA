@@ -25,7 +25,7 @@ public class Insercion {
         for (int i = 1; i < array.length; i++) {
             aux = array[i];
             for (int j = i-1; j >=0; j--) {
-              if(array[j]>aux){
+              if(array[j]<=aux){
                 j=-1;
                 contador++;
               }else {
