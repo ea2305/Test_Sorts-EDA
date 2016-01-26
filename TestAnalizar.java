@@ -66,7 +66,7 @@ public class TestAnalizar{
 
     guardarMatriculas(data_SortInteger, "Des");
     AnalizaArray aDes = new AnalizaArray(data_SortInteger);
-    //System.out.println(aDes.calculoFuncion());//desordenado
+    System.out.println(aDes.calculoFuncion());//desordenado
     System.out.println("desordenado con n: "+num);
     testOrdenamiento(data_SortInteger);
     System.out.println("-----------------------------------");
@@ -74,7 +74,7 @@ public class TestAnalizar{
     myQuick.sort(data_SortInteger);
     guardarMatriculas(data_SortInteger, "OA");
     AnalizaArray aOA = new AnalizaArray(data_SortInteger);
-    //System.out.println(aOA.calculoFuncion());//ordenado Ascendente
+    System.out.println(aOA.calculoFuncion());//ordenado Ascendente
     System.out.println("ordenado Ascendente con n: "+num);
     testOrdenamiento(data_SortInteger);
     System.out.println("-----------------------------------");
@@ -86,7 +86,7 @@ public class TestAnalizar{
     }
     guardarMatriculas(descendente, "OD");
     AnalizaArray aOD = new AnalizaArray(descendente);
-    //System.out.println(aOD.calculoFuncion());//ordenado descendente
+    System.out.println(aOD.calculoFuncion());//ordenado descendente
     System.out.println("ordenado descendente con n: "+num);
     testOrdenamiento(descendente);
     System.out.println("-----------------------------------");
