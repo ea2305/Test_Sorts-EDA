@@ -140,7 +140,7 @@
            System.out.println(">> Cargue datos de un archivo, antes de iniciar.");
            return;
        }
-       AnalizaArray aa = new AnalizaArray(data_Sort);
+       AnalizaArray aa = new AnalizaArray(data_SortInteger);
        System.out.println(aa.calculoFuncion());
      }
 
