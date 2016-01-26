@@ -65,7 +65,7 @@ public class AnalizaArray{
         return(
           "\n"+"Calculo de complejidad por funcion"
           +"\n"+"Arreglo Ordenado Ascendente con n: "+ n
-          +"\n\t"+"HeapSort complejidad: "+ (n*log(n,2))+(n/3)
+          +"\n\t"+"HeapSort complejidad: "+ ((n*log(n,2))+(n/3))
           +"\n\t"+"Insercion complejidad: "+ (((n-1)*(n/2))/2)//listo
           +"\n\t"+"Merge complejidad: "+ (n*log(n,2))
           +"\n\t"+"Seleccion complejidad: "+ (((n*n)-n)/2)//listo
@@ -75,8 +75,8 @@ public class AnalizaArray{
         return(
           "\n"+"Calculo de complejidad por funcion"
           +"\n"+"Arreglo Ordenado Descendente con n: "+ n
-          +"\n\t"+"HeapSort complejidad: "+ (n*log(n,2))+(n/3)
-          +"\n\t"+"Insercion complejidad: "+ (0)//listo
+          +"\n\t"+"HeapSort complejidad: "+ ((n*log(n,2))+(n/3))
+          +"\n\t"+"Insercion complejidad: "+ (n)//listo
           +"\n\t"+"Merge complejidad: "+ (n*log(n,2))
           +"\n\t"+"Seleccion complejidad: "+ (((n*n)-n)/2)//listo
           +"\n\t"+"Quicksort complejidad: "+ ((n*log(n,2))/3)
@@ -87,8 +87,8 @@ public class AnalizaArray{
       return(
         "\n"+"Calculo de complejidad por funcion"
         +"\n"+"Arreglo Desordenado con n: "+ n
-        +"\n\t"+"HeapSort complejidad: "+ (n*log(n,2))+(n/3)
-        +"\n\t"+"Insercion complejidad: "+ (((n-1)*(n/2))/4)//listo
+        +"\n\t"+"HeapSort complejidad: "+ ((n*log(n,2))+(n/3))
+        +"\n\t"+"Insercion complejidad: "+ (((n-1)*(n/2))/2)//listo
         +"\n\t"+"Merge complejidad: "+ (n*log(n,2))
         +"\n\t"+"Seleccion complejidad: "+ (((n*n)-n)/2)//listo
         +"\n\t"+"Quicksort complejidad: "+ ((n*log(n,2))/3)
