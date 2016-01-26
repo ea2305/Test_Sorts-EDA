@@ -102,6 +102,7 @@
          }
 
         Integer[] data = seleccion.seleccion(data_SortInteger);
+        System.out.println("\n>> [ Numero de intercambios : " + seleccion.getIndex() + " ]");
         System.out.println("\n>> [ Tiempo : " + seleccion.getTime() + " ]");
         //printArray(data_Sort);
         //printArray(data_SortInteger);
